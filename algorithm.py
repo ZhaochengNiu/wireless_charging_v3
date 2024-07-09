@@ -815,18 +815,10 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                     offload_computing_cpu_demand = cpu_frequency_demand - local_computing_cpu_demand
                     interference_number = 1
                     for infer_device_id in range(0, config.total_number_of_devices):
-                        if infer_device_id != lucky_user and decisions.execute_mode[infer_device_id] == 'edge' and \
-                                decisions.execute_destination[infer_device_id] == edge_id:
+                        if infer_device_id != lucky_user and decisions.execute_mode[infer_device_id] == 'edge' and decisions.execute_destination[infer_device_id] == execute_edge_id:
                             interference_number += 1
-
-
-
-
-                        offload_computing_cpu_demand = task.cpu_frequency_demand - local_computing_cpu_demand
-
-                        actual_frequency = edges_temp[edge_id].frequency / interference_number
-                        edge_compute_task_latency = offload_computing_cpu_demand / actual_frequency
-
+                    actual_frequency = edges_temp[execute_edge_id].frequency / interference_number
+                    edge_computing_task_latency = offload_computing_cpu_demand / actual_frequency
                 elif offload_computing_portion == 0:
                     edge_computing_task_latency = 0
                 else:
@@ -1105,8 +1097,12 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                         # 边缘计算执行时间
                         if offload_computing_portion > 0:
                             offload_computing_cpu_demand = cpu_frequency_demand * offload_computing_portion
-                            edge_queue_length = execute_edge.task_queue_length() + offload_computing_cpu_demand
-                            edge_computing_task_latency = edge_queue_length / execute_edge.frequency
+                            interference_number = 1
+                            for infer_device_id in range(0, config.total_number_of_devices):
+                                if infer_device_id != lucky_user and decisions.execute_mode[infer_device_id] == 'edge' and decisions.execute_destination[infer_device_id] == execute_edge_id:
+                                    interference_number += 1
+                            actual_frequency = edges_temp[execute_edge_id].frequency / interference_number
+                            edge_computing_task_latency = offload_computing_cpu_demand / actual_frequency
                         elif offload_computing_portion == 0:
                             edge_computing_task_latency = 0
                         else:
@@ -1203,8 +1199,12 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                             # 边缘计算执行时间
                             if offload_computing_portion > 0:
                                 offload_computing_cpu_demand = cpu_frequency_demand * offload_computing_portion
-                                edge_queue_length = execute_edge.task_queue_length() + offload_computing_cpu_demand
-                                edge_computing_task_latency = edge_queue_length / execute_edge.frequency
+                                interference_number = 1
+                                for infer_device_id in range(0, config.total_number_of_devices):
+                                    if infer_device_id != lucky_user and decisions.execute_mode[infer_device_id] == 'edge' and decisions.execute_destination[infer_device_id] == execute_edge_id:
+                                        interference_number += 1
+                                actual_frequency = edges_temp[execute_edge_id].frequency / interference_number
+                                edge_computing_task_latency = offload_computing_cpu_demand / actual_frequency
                             elif offload_computing_portion == 0:
                                 edge_computing_task_latency = 0
                             else:
