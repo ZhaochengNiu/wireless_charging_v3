@@ -33,7 +33,6 @@ class MobileDevice:
         self.MIN_Y_LOCATION = min_y_location
         self.MAX_Y_LOCATION = max_y_location
 
-
         # Energy status | latency weight | energy weight |
         #  [100%, 80%)  |      0.85      |       0.15    |
         #  [80%, 65%)   |      0.65      |       0.35    |

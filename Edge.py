@@ -2,31 +2,17 @@ class Edge:
 
     def __init__(self, nid, frequency, ncp_type, x, y, coverage_radius, total_number_of_devices) -> None:
         super().__init__()
-        self.task_queue = 0
         self.id = nid       # 序号
         self.frequency = frequency          # 当前计算能力
-        self.task_queue = 0
         # 传输功率 100W
         self.trans_power = 50
         self.ncp_type = ncp_type   # 节点类型
+        self.queue = []
         self.x = x  # x 坐标
         self.y = y  # y 坐标
         self.coverage_radius = coverage_radius
         self.coverage_mobile_device = [0 for i in range(0, total_number_of_devices)]
         self.distance_device = [0 for i in range(0, total_number_of_devices)]
-
-    def task_enqueue(self, cpu_frequency_demand):
-        self.task_queue += cpu_frequency_demand
-
-
-    def task_dequeue(self, cpu_frequency_demand):
-        if self.task_queue >= cpu_frequency_demand:
-            self.task_queue -= cpu_frequency_demand
-        else:
-            self.task_queue = 0
-
-    def task_queue_length(self):
-        return self.task_queue
 
 
 if __name__ == '__main__':
