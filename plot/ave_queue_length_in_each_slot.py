@@ -4,11 +4,11 @@ import seaborn as sns
 
 sns.set_theme(context='notebook', style='whitegrid', palette='deep', font='sans-serif', font_scale=1.0, color_codes=True, rc=None)
 
-Local = np.loadtxt('./result/LocalAveQueueLengthInEachSlotFilePath50.cache')
-Nearest = np.loadtxt('./result/NearestAveQueueLengthInEachSlotFilePath50.cache')
-Random = np.loadtxt('./result/RandomAveQueueLengthInEachSlotFilePath50.cache')
-Match = np.loadtxt('./result/MatchAveQueueLengthInEachSlotFilePath50.cache')
-Proposed = np.loadtxt('./result/ProposedAveQueueLengthInEachSlotFilePath50.cache')
+Local = np.loadtxt('../result/LocalAveQueueLengthInEachSlotFilePath50.cache')
+Nearest = np.loadtxt('../result/NearestAveQueueLengthInEachSlotFilePath50.cache')
+Random = np.loadtxt('../result/RandomAveQueueLengthInEachSlotFilePath50.cache')
+Match = np.loadtxt('../result/MatchAveQueueLengthInEachSlotFilePath50.cache')
+Proposed = np.loadtxt('../result/ProposedAveQueueLengthInEachSlotFilePath50.cache')
 
 # 生成数据
 x = np.arange(0, 1000, 1)  # 横坐标数据为从0到1000之间，步长为1的等差数组
@@ -39,6 +39,6 @@ plt.ylabel('Average backlog of queues in the system (MB)')
 # 设置legend
 plt.legend(handles=[Local, Nearest, Random, Match, Proposed], labels=['Local', 'Nearest', 'Random', 'Match', 'Proposed'], loc='best')
 
-plt.savefig('./AveQueueLengthInEachSlot20.pdf', format='pdf')
+plt.savefig('./fig/AveQueueLengthInEachSlot20.pdf', format='pdf')
 # 显示图形
 plt.show()

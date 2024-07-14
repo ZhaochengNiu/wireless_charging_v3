@@ -41,7 +41,7 @@ plt.ylabel('Ratio of different decision mode in each slot (s)')
 
 plt.legend(handles=[Local_temp, Edge_temp, D2D_temp], labels=['Local Ratio', 'Edge Ratio', 'D2D Ratio'], loc='best')
 
-plt.savefig('./DecisionRatioInEachSlot.pdf', format='pdf')
+plt.savefig('./plot/DecisionRatioInEachSlot.pdf', format='pdf')
 # 显示图形
 
 plt.show()

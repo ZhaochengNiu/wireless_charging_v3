@@ -4,25 +4,25 @@ import numpy as np
 import seaborn as sns
 sns.set_theme(context='notebook', style='whitegrid', palette='deep', font='sans-serif', font_scale=1.0, color_codes=True, rc=None)
 
-Local10 = np.loadtxt('./result/LocalRatioInEachSlotFilePath10.cache')
-Edge10 = np.loadtxt('./result/EdgeRatioInEachSlotFilePath10.cache')
-D2D10 = np.loadtxt('./result/D2DRatioInEachSlotFilePath10.cache')
+Local10 = np.loadtxt('../result/LocalRatioInEachSlotFilePath10.cache')
+Edge10 = np.loadtxt('../result/EdgeRatioInEachSlotFilePath10.cache')
+D2D10 = np.loadtxt('../result/D2DRatioInEachSlotFilePath10.cache')
 
-Local20 = np.loadtxt('./result/LocalRatioInEachSlotFilePath20.cache')
-Edge20 = np.loadtxt('./result/EdgeRatioInEachSlotFilePath20.cache')
-D2D20 = np.loadtxt('./result/D2DRatioInEachSlotFilePath20.cache')
+Local20 = np.loadtxt('../result/LocalRatioInEachSlotFilePath20.cache')
+Edge20 = np.loadtxt('../result/EdgeRatioInEachSlotFilePath20.cache')
+D2D20 = np.loadtxt('../result/D2DRatioInEachSlotFilePath20.cache')
 
-Local30 = np.loadtxt('./result/LocalRatioInEachSlotFilePath30.cache')
-Edge30 = np.loadtxt('./result/EdgeRatioInEachSlotFilePath30.cache')
-D2D30 = np.loadtxt('./result/D2DRatioInEachSlotFilePath30.cache')
+Local30 = np.loadtxt('../result/LocalRatioInEachSlotFilePath30.cache')
+Edge30 = np.loadtxt('../result/EdgeRatioInEachSlotFilePath30.cache')
+D2D30 = np.loadtxt('../result/D2DRatioInEachSlotFilePath30.cache')
 
-Local40 = np.loadtxt('./result/LocalRatioInEachSlotFilePath40.cache')
-Edge40 = np.loadtxt('./result/EdgeRatioInEachSlotFilePath40.cache')
-D2D40= np.loadtxt('./result/D2DRatioInEachSlotFilePath40.cache')
+Local40 = np.loadtxt('../result/LocalRatioInEachSlotFilePath40.cache')
+Edge40 = np.loadtxt('../result/EdgeRatioInEachSlotFilePath40.cache')
+D2D40= np.loadtxt('../result/D2DRatioInEachSlotFilePath40.cache')
 
-Local50 = np.loadtxt('./result/LocalRatioInEachSlotFilePath50.cache')
-Edge50 = np.loadtxt('./result/EdgeRatioInEachSlotFilePath50.cache')
-D2D50= np.loadtxt('./result/D2DRatioInEachSlotFilePath50.cache')
+Local50 = np.loadtxt('../result/LocalRatioInEachSlotFilePath50.cache')
+Edge50 = np.loadtxt('../result/EdgeRatioInEachSlotFilePath50.cache')
+D2D50= np.loadtxt('../result/D2DRatioInEachSlotFilePath50.cache')
 
 Local10_temp = sum(Local10)/1000
 Edge10_temp = sum(Edge10)/1000
@@ -86,5 +86,5 @@ ax.set_ylabel('Decision rate (%)')
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
 ax.legend()
-plt.savefig('./DecisionRatioStackedBar.pdf', format='pdf')
+plt.savefig('./fig/DecisionRatioStackedBar.pdf', format='pdf')
 plt.show()

@@ -7,11 +7,11 @@ sns.set_theme(context='notebook', style='whitegrid', font='sans-serif', font_sca
 # styledict, or one of {darkgrid, whitegrid, dark, white, ticks}
 # palette = "pastel" "husl" "Set2"
 
-Local = np.loadtxt('./result/LocalAveExecuteLatencyInEachSlotFilePath40.cache')
-Nearest = np.loadtxt('./result/NearestAveExecuteLatencyInEachSlotFilePath40.cache')
-Random = np.loadtxt('./result/RandomAveExecuteLatencyInEachSlotFilePath40.cache')
-Match = np.loadtxt('./result/MatchAveExecuteLatencyInEachSlotFilePath40.cache')
-Proposed = np.loadtxt('./result/ProposedAveExecuteLatencyInEachSlotFilePath40.cache')
+Local = np.loadtxt('../result/LocalAveExecuteLatencyInEachSlotFilePath40.cache')
+Nearest = np.loadtxt('../result/NearestAveExecuteLatencyInEachSlotFilePath40.cache')
+Random = np.loadtxt('../result/RandomAveExecuteLatencyInEachSlotFilePath40.cache')
+Match = np.loadtxt('../result/MatchAveExecuteLatencyInEachSlotFilePath40.cache')
+Proposed = np.loadtxt('../result/ProposedAveExecuteLatencyInEachSlotFilePath40.cache')
 
 # 生成数据
 x = np.arange(0, 1000, 5)  # 横坐标数据为从0到1000之间，步长为1的等差数组
@@ -52,6 +52,6 @@ plt.xlim(0, 1000)
 plt.legend(handles=[Local_temp, Nearest_temp, Random_temp, Match_temp, Proposed_temp], labels=['Local', 'Nearest', 'Random', 'Match', 'Proposed'], loc='best')
 # 显示图形
 
-plt.savefig('./AveExecuteLatencyInEachSlot40.pdf', format='pdf')
+plt.savefig('./fig/AveExecuteLatencyInEachSlot40.pdf', format='pdf')
 
 plt.show()

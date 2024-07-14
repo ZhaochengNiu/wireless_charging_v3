@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-Local = np.loadtxt('./result/LocalAveExecuteLatencyInEachSlotFilePath50.cache')
-Nearest = np.loadtxt('./result/NearestAveExecuteLatencyInEachSlotFilePath50.cache')
-Random = np.loadtxt('./result/RandomAveExecuteLatencyInEachSlotFilePath50.cache')
-Match = np.loadtxt('./result/MatchAveExecuteLatencyInEachSlotFilePath50.cache')
-Proposed = np.loadtxt('./result/ProposedAveExecuteLatencyInEachSlotFilePath50.cache')
+Local = np.loadtxt('../result/LocalAveExecuteLatencyInEachSlotFilePath50.cache')
+Nearest = np.loadtxt('../result/NearestAveExecuteLatencyInEachSlotFilePath50.cache')
+Random = np.loadtxt('../result/RandomAveExecuteLatencyInEachSlotFilePath50.cache')
+Match = np.loadtxt('../result/MatchAveExecuteLatencyInEachSlotFilePath50.cache')
+Proposed = np.loadtxt('../result/ProposedAveExecuteLatencyInEachSlotFilePath50.cache')
 
 all_data = [Local, Nearest, Random, Match, Proposed]
 labels = ['Local', 'Nearest', 'Random', 'Match', 'Proposed']
@@ -72,7 +72,7 @@ axes.yaxis.grid(True)
 axes.set_xlabel('Algorithms')
 axes.set_ylabel('Execution latency (s)')
 
-plt.savefig('./BoxLineDiagramOfExecutionLatency50.pdf', format='pdf')
+plt.savefig('./fig/BoxLineDiagramOfExecutionLatency50.pdf', format='pdf')
 
 plt.show()
 
