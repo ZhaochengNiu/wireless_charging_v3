@@ -947,7 +947,8 @@ class Config:
         # self.algorithm = 'nearest_algorithm'
         # self.algorithm = 'random_algorithm'
         # self.algorithm = 'match_algorithm'
-        self.algorithm = 'proposed_algorithm'
+        self.algorithm = 'dot_algorithm'
+        # self.algorithm = 'proposed_algorithm'
         # 'local_algorithm'  'nearest_algorithm' 'random_algorithm' 'proposed_algorithm'
 
         # IoTJ: Joint Task Offloading, D2D Pairing, and Resource Allocation in Device-Enhanced MEC: A Potential Game Approach
@@ -960,54 +961,57 @@ class Config:
         self.edges_cache_file_path = './cache/Edges10.cache'
         self.task_cache_file_path = './cache/Task10.cache'
         self.number_of_tasks_cache_file_path = './cache/NumberOfTasks10.cache'
+        self.x_location_in_each_slot_file_path = './cache/XLocation10.cache'
+        self.y_location_in_each_slot_file_path = './cache/YLocation10.cache'
 
         self.local_ave_queue_length_in_each_slot_file_path = './result/LocalAveQueueLengthInEachSlotFilePath10.cache'
         self.nearest_ave_queue_length_in_each_slot_file_path = './result/NearestAveQueueLengthInEachSlotFilePath10.cache'
         self.random_ave_queue_length_in_each_slot_file_path = './result/RandomAveQueueLengthInEachSlotFilePath10.cache'
         self.match_ave_queue_length_in_each_slot_file_path = './result/MatchAveQueueLengthInEachSlotFilePath10.cache'
+        self.dot_ave_queue_length_in_each_slot_file_path = './result/DotAveQueueLengthInEachSlotFilePath10.cache'
         self.proposed_ave_queue_length_in_each_slot_file_path = './result/ProposedAveQueueLengthInEachSlotFilePath10.cache'
 
         self.local_ave_execute_latency_in_each_slot_file_path = './result/LocalAveExecuteLatencyInEachSlotFilePath10.cache'
         self.nearest_ave_execute_latency_in_each_slot_file_path = './result/NearestAveExecuteLatencyInEachSlotFilePath10.cache'
         self.random_ave_execute_latency_in_each_slot_file_path = './result/RandomAveExecuteLatencyInEachSlotFilePath10.cache'
         self.match_ave_execute_latency_in_each_slot_file_path = './result/MatchAveExecuteLatencyInEachSlotFilePath10.cache'
+        self.dot_ave_execute_latency_in_each_slot_file_path = './result/DotAveExecuteLatencyInEachSlotFilePath10.cache'
         self.proposed_ave_execute_latency_in_each_slot_file_path = './result/ProposedAveExecuteLatencyInEachSlotFilePath10.cache'
 
         self.local_energy_consumption_in_each_slot_file_path = './result/LocalEnergyConsumptionInEachSlotFilePath10.cache'
         self.nearest_energy_consumption_in_each_slot_file_path = './result/NearestEnergyConsumptionInEachSlotFilePath10.cache'
         self.random_energy_consumption_in_each_slot_file_path = './result/RandomEnergyConsumptionInEachSlotFilePath10.cache'
         self.match_energy_consumption_in_each_slot_file_path = './result/MatchEnergyConsumptionInEachSlotFilePath10.cache'
+        self.dot_energy_consumption_in_each_slot_file_path = './result/DotEnergyConsumptionInEachSlotFilePath10.cache'
         self.proposed_energy_consumption_in_each_slot_file_path = './result/ProposedEnergyConsumptionInEachSlotFilePath10.cache'
 
         self.local_energy_harvest_in_each_slot_file_path = './result/LocalEnergyHarvestInEachSlotFilePath10.cache'
         self.nearest_energy_harvest_in_each_slot_file_path = './result/NearestEnergyHarvestInEachSlotFilePath10.cache'
         self.random_energy_harvest_in_each_slot_file_path = './result/RandomEnergyHarvestInEachSlotFilePath10.cache'
         self.match_energy_harvest_in_each_slot_file_path = './result/MatchEnergyHarvestInEachSlotFilePath10.cache'
+        self.dot_energy_harvest_in_each_slot_file_path = './result/DotEnergyHarvestInEachSlotFilePath10.cache'
         self.proposed_energy_harvest_in_each_slot_file_path = './result/ProposedEnergyHarvestInEachSlotFilePath10.cache'
 
         self.local_energy_cost_in_each_slot_file_path = './result/LocalEnergyCostInEachSlotFilePath10.cache'
         self.nearest_energy_cost_in_each_slot_file_path = './result/NearestEnergyCostInEachSlotFilePath10.cache'
         self.random_energy_cost_in_each_slot_file_path = './result/RandomEnergyCostInEachSlotFilePath10.cache'
         self.match_energy_cost_in_each_slot_file_path = './result/MatchEnergyCostInEachSlotFilePath10.cache'
+        self.dot_energy_cost_in_each_slot_file_path = './result/DotEnergyCostInEachSlotFilePath10.cache'
         self.proposed_energy_cost_in_each_slot_file_path = './result/ProposedEnergyCostInEachSlotFilePath10.cache'
 
         self.local_latency_cost_in_each_slot_file_path = './result/LocalLatencyCostInEachSlotFilePath10.cache'
         self.nearest_latency_cost_in_each_slot_file_path = './result/NearestLatencyCostInEachSlotFilePath10.cache'
         self.random_latency_cost_in_each_slot_file_path = './result/RandomLatencyCostInEachSlotFilePath10.cache'
         self.match_latency_cost_in_each_slot_file_path = './result/MatchLatencyCostInEachSlotFilePath10.cache'
+        self.dot_latency_cost_in_each_slot_file_path = './result/DotLatencyCostInEachSlotFilePath10.cache'
         self.proposed_latency_cost_in_each_slot_file_path = './result/ProposedLatencyCostInEachSlotFilePath10.cache'
 
         self.local_total_cost_in_each_slot_file_path = './result/LocalTotalCostInEachSlotFilePath10.cache'
         self.nearest_total_cost_in_each_slot_file_path = './result/NearestTotalCostInEachSlotFilePath10.cache'
         self.random_total_cost_in_each_slot_file_path = './result/RandomTotalCostInEachSlotFilePath10.cache'
         self.match_total_cost_in_each_slot_file_path = './result/MatchTotalCostInEachSlotFilePath10.cache'
+        self.dot_total_cost_in_each_slot_file_path = './result/DotTotalCostInEachSlotFilePath10.cache'
         self.proposed_total_cost_in_each_slot_file_path = './result/ProposedTotalCostInEachSlotFilePath10.cache'
-
-        self.local_io_in_each_slot_file_path = './result/LocalIOInEachSlotFilePath10.cache'
-        self.nearest_io_in_each_slot_file_path = './result/NearestIOInEachSlotFilePath10.cache'
-        self.random_io_in_each_slot_file_path = './result/RandomIOInEachSlotFilePath10.cache'
-        self.match_io_in_each_slot_file_path = './result/MatchIOInEachSlotFilePath10.cache'
-        self.proposed_io_in_each_slot_file_path = './result/ProposedIOInEachSlotFilePath10.cache'
 
         self.local_ratio_in_each_slot_file_path = './result/LocalRatioInEachSlotFilePath10.cache'
         self.edge_ratio_in_each_slot_file_path = './result/EdgeRatioInEachSlotFilePath10.cache'
@@ -1111,8 +1115,8 @@ class Config:
         # self.algorithm = 'nearest_algorithm'
         # self.algorithm = 'random_algorithm'
         # self.algorithm = 'match_algorithm'
-        # self.algorithm = 'dot_algorithm'
-        self.algorithm = 'proposed_algorithm'
+        self.algorithm = 'dot_algorithm'
+        # self.algorithm = 'proposed_algorithm'
         # 'local_algorithm'  'nearest_algorithm' 'random_algorithm' 'proposed_algorithm'
 
         # IoTJ: Joint Task Offloading, D2D Pairing, and Resource Allocation in Device-Enhanced MEC: A Potential Game Approach
@@ -1125,6 +1129,8 @@ class Config:
         self.edges_cache_file_path = './cache/Edges20.cache'
         self.task_cache_file_path = './cache/Task20.cache'
         self.number_of_tasks_cache_file_path = './cache/NumberOfTasks20.cache'
+        self.x_location_in_each_slot_file_path = './cache/XLocation20.cache'
+        self.y_location_in_each_slot_file_path = './cache/YLocation20.cache'
 
         self.local_ave_queue_length_in_each_slot_file_path = './result/LocalAveQueueLengthInEachSlotFilePath20.cache'
         self.nearest_ave_queue_length_in_each_slot_file_path = './result/NearestAveQueueLengthInEachSlotFilePath20.cache'

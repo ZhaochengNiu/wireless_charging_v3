@@ -249,7 +249,7 @@ def binary_match_game(decisions, config, devices, edges, time_slot, task_in_each
                     # 边缘计算能量效用
                     edge_energy_cost = edge_transmit_consumption - energy_harvest
                     # 边缘计算数据大小
-                    edge_compute_size = edges[edge_id].task_queue_length() + task.cpu_frequency_demand
+                    edge_compute_size = task.cpu_frequency_demand
                     # 边缘计算时间
                     edge_compute_latency = edge_compute_size / edges[edge_id].frequency
                     # 边缘执行延迟
@@ -402,7 +402,7 @@ def dot_game(decisions, config, devices, edges, time_slot, task_in_each_slot):
                     decisions.execute_mode.append('local')
                     decisions.execute_destination.append(-1)
                 else:
-                    pass
+                    print('error')
             else:
                 print('error')
         elif task_in_each_slot[time_slot][device_id] == 0:
@@ -630,7 +630,7 @@ def dot_game(decisions, config, devices, edges, time_slot, task_in_each_slot):
             if flag >= 50:
                 break
             decisions.execute_mode[lucky_user] = iteration_execute_mode
-            decisions.execute_decision[lucky_user] = iteration_execute_destination
+            decisions.execute_destination[lucky_user] = iteration_execute_destination
             decisions.local_computing_portion[lucky_user] = iteration_local_computing_portion
         elif decisions.execute_mode[lucky_user] == 'null':
             pass

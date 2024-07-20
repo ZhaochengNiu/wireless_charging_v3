@@ -1,4 +1,5 @@
-# 10个用户
+
+# 20个用户
 
 class Config:
     '''配置类'''
@@ -10,16 +11,16 @@ class Config:
         self.total_number_of_edges = 4
 
         # 设备总数量
-        self.total_number_of_devices = 10
+        self.total_number_of_devices = 20
 
-        self.total_number_of_active_devices = 6
+        self.total_number_of_active_devices = 13
 
-        self.total_number_of_passive_devices = 4
+        self.total_number_of_passive_devices = 7
 
         # 迭代次数
         self.times = 1000
 
-        self.iterations_number_of_game_theory = 100
+        self.iterations_number_of_game_theory = 300
 
         self.iterations_number_of_proposed_algorithm = 200
 
@@ -104,67 +105,69 @@ class Config:
         self.cache = True
         # self.cache = False
         # True False
-        self.devices_cache_file_path = './cache/Devices10.cache'
-        self.edges_cache_file_path = './cache/Edges10.cache'
-        self.task_cache_file_path = './cache/Task10.cache'
-        self.number_of_tasks_cache_file_path = './cache/NumberOfTasks10.cache'
+        self.devices_cache_file_path = './cache/Devices20.cache'
+        self.edges_cache_file_path = './cache/Edges20.cache'
+        self.task_cache_file_path = './cache/Task20.cache'
+        self.number_of_tasks_cache_file_path = './cache/NumberOfTasks20.cache'
+        self.x_location_in_each_slot_file_path = './cache/XLocation20.cache'
+        self.y_location_in_each_slot_file_path = './cache/YLocation20.cache'
 
-        self.local_ave_queue_length_in_each_slot_file_path = './result/LocalAveQueueLengthInEachSlotFilePath10.cache'
-        self.nearest_ave_queue_length_in_each_slot_file_path = './result/NearestAveQueueLengthInEachSlotFilePath10.cache'
-        self.random_ave_queue_length_in_each_slot_file_path = './result/RandomAveQueueLengthInEachSlotFilePath10.cache'
-        self.match_ave_queue_length_in_each_slot_file_path = './result/MatchAveQueueLengthInEachSlotFilePath10.cache'
-        self.dot_ave_queue_length_in_each_slot_file_path = './result/DotAveQueueLengthInEachSlotFilePath10.cache'
-        self.proposed_ave_queue_length_in_each_slot_file_path = './result/ProposedAveQueueLengthInEachSlotFilePath10.cache'
+        self.local_ave_queue_length_in_each_slot_file_path = './result/LocalAveQueueLengthInEachSlotFilePath20.cache'
+        self.nearest_ave_queue_length_in_each_slot_file_path = './result/NearestAveQueueLengthInEachSlotFilePath20.cache'
+        self.random_ave_queue_length_in_each_slot_file_path = './result/RandomAveQueueLengthInEachSlotFilePath20.cache'
+        self.match_ave_queue_length_in_each_slot_file_path = './result/MatchAveQueueLengthInEachSlotFilePath20.cache'
+        self.dot_ave_queue_length_in_each_slot_file_path = './result/DotAveQueueLengthInEachSlotFilePath20.cache'
+        self.proposed_ave_queue_length_in_each_slot_file_path = './result/ProposedAveQueueLengthInEachSlotFilePath20.cache'
 
-        self.local_ave_execute_latency_in_each_slot_file_path = './result/LocalAveExecuteLatencyInEachSlotFilePath10.cache'
-        self.nearest_ave_execute_latency_in_each_slot_file_path = './result/NearestAveExecuteLatencyInEachSlotFilePath10.cache'
-        self.random_ave_execute_latency_in_each_slot_file_path = './result/RandomAveExecuteLatencyInEachSlotFilePath10.cache'
-        self.match_ave_execute_latency_in_each_slot_file_path = './result/MatchAveExecuteLatencyInEachSlotFilePath10.cache'
-        self.dot_ave_execute_latency_in_each_slot_file_path = './result/DotAveExecuteLatencyInEachSlotFilePath10.cache'
-        self.proposed_ave_execute_latency_in_each_slot_file_path = './result/ProposedAveExecuteLatencyInEachSlotFilePath10.cache'
+        self.local_ave_execute_latency_in_each_slot_file_path = './result/LocalAveExecuteLatencyInEachSlotFilePath20.cache'
+        self.nearest_ave_execute_latency_in_each_slot_file_path = './result/NearestAveExecuteLatencyInEachSlotFilePath20.cache'
+        self.random_ave_execute_latency_in_each_slot_file_path = './result/RandomAveExecuteLatencyInEachSlotFilePath20.cache'
+        self.match_ave_execute_latency_in_each_slot_file_path = './result/MatchAveExecuteLatencyInEachSlotFilePath20.cache'
+        self.dot_ave_execute_latency_in_each_slot_file_path = './result/DotAveExecuteLatencyInEachSlotFilePath20.cache'
+        self.proposed_ave_execute_latency_in_each_slot_file_path = './result/ProposedAveExecuteLatencyInEachSlotFilePath20.cache'
 
-        self.local_energy_consumption_in_each_slot_file_path = './result/LocalEnergyConsumptionInEachSlotFilePath10.cache'
-        self.nearest_energy_consumption_in_each_slot_file_path = './result/NearestEnergyConsumptionInEachSlotFilePath10.cache'
-        self.random_energy_consumption_in_each_slot_file_path = './result/RandomEnergyConsumptionInEachSlotFilePath10.cache'
-        self.match_energy_consumption_in_each_slot_file_path = './result/MatchEnergyConsumptionInEachSlotFilePath10.cache'
-        self.dot_energy_consumption_in_each_slot_file_path = './result/DotEnergyConsumptionInEachSlotFilePath10.cache'
-        self.proposed_energy_consumption_in_each_slot_file_path = './result/ProposedEnergyConsumptionInEachSlotFilePath10.cache'
+        self.local_energy_consumption_in_each_slot_file_path = './result/LocalEnergyConsumptionInEachSlotFilePath20.cache'
+        self.nearest_energy_consumption_in_each_slot_file_path = './result/NearestEnergyConsumptionInEachSlotFilePath20.cache'
+        self.random_energy_consumption_in_each_slot_file_path = './result/RandomEnergyConsumptionInEachSlotFilePath20.cache'
+        self.match_energy_consumption_in_each_slot_file_path = './result/MatchEnergyConsumptionInEachSlotFilePath20.cache'
+        self.dot_energy_consumption_in_each_slot_file_path = './result/DotEnergyConsumptionInEachSlotFilePath20.cache'
+        self.proposed_energy_consumption_in_each_slot_file_path = './result/ProposedEnergyConsumptionInEachSlotFilePath20.cache'
 
-        self.local_energy_harvest_in_each_slot_file_path = './result/LocalEnergyHarvestInEachSlotFilePath10.cache'
-        self.nearest_energy_harvest_in_each_slot_file_path = './result/NearestEnergyHarvestInEachSlotFilePath10.cache'
-        self.random_energy_harvest_in_each_slot_file_path = './result/RandomEnergyHarvestInEachSlotFilePath10.cache'
-        self.match_energy_harvest_in_each_slot_file_path = './result/MatchEnergyHarvestInEachSlotFilePath10.cache'
-        self.dot_energy_harvest_in_each_slot_file_path = './result/DotEnergyHarvestInEachSlotFilePath10.cache'
-        self.proposed_energy_harvest_in_each_slot_file_path = './result/ProposedEnergyHarvestInEachSlotFilePath10.cache'
+        self.local_energy_harvest_in_each_slot_file_path = './result/LocalEnergyHarvestInEachSlotFilePath20.cache'
+        self.nearest_energy_harvest_in_each_slot_file_path = './result/NearestEnergyHarvestInEachSlotFilePath20.cache'
+        self.random_energy_harvest_in_each_slot_file_path = './result/RandomEnergyHarvestInEachSlotFilePath20.cache'
+        self.match_energy_harvest_in_each_slot_file_path = './result/MatchEnergyHarvestInEachSlotFilePath20.cache'
+        self.dot_energy_harvest_in_each_slot_file_path = './result/DotEnergyHarvestInEachSlotFilePath20.cache'
+        self.proposed_energy_harvest_in_each_slot_file_path = './result/ProposedEnergyHarvestInEachSlotFilePath20.cache'
 
-        self.local_energy_cost_in_each_slot_file_path = './result/LocalEnergyCostInEachSlotFilePath10.cache'
-        self.nearest_energy_cost_in_each_slot_file_path = './result/NearestEnergyCostInEachSlotFilePath10.cache'
-        self.random_energy_cost_in_each_slot_file_path = './result/RandomEnergyCostInEachSlotFilePath10.cache'
-        self.match_energy_cost_in_each_slot_file_path = './result/MatchEnergyCostInEachSlotFilePath10.cache'
-        self.dot_energy_cost_in_each_slot_file_path = './result/DotEnergyCostInEachSlotFilePath10.cache'
-        self.proposed_energy_cost_in_each_slot_file_path = './result/ProposedEnergyCostInEachSlotFilePath10.cache'
+        self.local_energy_cost_in_each_slot_file_path = './result/LocalEnergyCostInEachSlotFilePath20.cache'
+        self.nearest_energy_cost_in_each_slot_file_path = './result/NearestEnergyCostInEachSlotFilePath20.cache'
+        self.random_energy_cost_in_each_slot_file_path = './result/RandomEnergyCostInEachSlotFilePath20.cache'
+        self.match_energy_cost_in_each_slot_file_path = './result/MatchEnergyCostInEachSlotFilePath20.cache'
+        self.dot_energy_cost_in_each_slot_file_path = './result/DotEnergyCostInEachSlotFilePath20.cache'
+        self.proposed_energy_cost_in_each_slot_file_path = './result/ProposedEnergyCostInEachSlotFilePath20.cache'
 
-        self.local_latency_cost_in_each_slot_file_path = './result/LocalLatencyCostInEachSlotFilePath10.cache'
-        self.nearest_latency_cost_in_each_slot_file_path = './result/NearestLatencyCostInEachSlotFilePath10.cache'
-        self.random_latency_cost_in_each_slot_file_path = './result/RandomLatencyCostInEachSlotFilePath10.cache'
-        self.match_latency_cost_in_each_slot_file_path = './result/MatchLatencyCostInEachSlotFilePath10.cache'
-        self.dot_latency_cost_in_each_slot_file_path = './result/DotLatencyCostInEachSlotFilePath10.cache'
-        self.proposed_latency_cost_in_each_slot_file_path = './result/ProposedLatencyCostInEachSlotFilePath10.cache'
+        self.local_latency_cost_in_each_slot_file_path = './result/LocalLatencyCostInEachSlotFilePath20.cache'
+        self.nearest_latency_cost_in_each_slot_file_path = './result/NearestLatencyCostInEachSlotFilePath20.cache'
+        self.random_latency_cost_in_each_slot_file_path = './result/RandomLatencyCostInEachSlotFilePath20.cache'
+        self.match_latency_cost_in_each_slot_file_path = './result/MatchLatencyCostInEachSlotFilePath20.cache'
+        self.dot_latency_cost_in_each_slot_file_path = './result/DotLatencyCostInEachSlotFilePath20.cache'
+        self.proposed_latency_cost_in_each_slot_file_path = './result/ProposedLatencyCostInEachSlotFilePath20.cache'
 
-        self.local_total_cost_in_each_slot_file_path = './result/LocalTotalCostInEachSlotFilePath10.cache'
-        self.nearest_total_cost_in_each_slot_file_path = './result/NearestTotalCostInEachSlotFilePath10.cache'
-        self.random_total_cost_in_each_slot_file_path = './result/RandomTotalCostInEachSlotFilePath10.cache'
-        self.match_total_cost_in_each_slot_file_path = './result/MatchTotalCostInEachSlotFilePath10.cache'
-        self.dot_total_cost_in_each_slot_file_path = './result/DotTotalCostInEachSlotFilePath10.cache'
-        self.proposed_total_cost_in_each_slot_file_path = './result/ProposedTotalCostInEachSlotFilePath10.cache'
+        self.local_total_cost_in_each_slot_file_path = './result/LocalTotalCostInEachSlotFilePath20.cache'
+        self.nearest_total_cost_in_each_slot_file_path = './result/NearestTotalCostInEachSlotFilePath20.cache'
+        self.random_total_cost_in_each_slot_file_path = './result/RandomTotalCostInEachSlotFilePath20.cache'
+        self.match_total_cost_in_each_slot_file_path = './result/MatchTotalCostInEachSlotFilePath20.cache'
+        self.dot_total_cost_in_each_slot_file_path = './result/DotTotalCostInEachSlotFilePath20.cache'
+        self.proposed_total_cost_in_each_slot_file_path = './result/ProposedTotalCostInEachSlotFilePath20.cache'
 
-        self.local_io_in_each_slot_file_path = './result/LocalIOInEachSlotFilePath10.cache'
-        self.nearest_io_in_each_slot_file_path = './result/NearestIOInEachSlotFilePath10.cache'
-        self.random_io_in_each_slot_file_path = './result/RandomIOInEachSlotFilePath10.cache'
-        self.match_io_in_each_slot_file_path = './result/MatchIOInEachSlotFilePath10.cache'
-        self.dot_io_in_each_slot_file_path = './result/DotIOInEachSlotFilePath10.cache'
-        self.proposed_io_in_each_slot_file_path = './result/ProposedIOInEachSlotFilePath10.cache'
+        self.local_io_in_each_slot_file_path = './result/LocalIOInEachSlotFilePath20.cache'
+        self.nearest_io_in_each_slot_file_path = './result/NearestIOInEachSlotFilePath20.cache'
+        self.random_io_in_each_slot_file_path = './result/RandomIOInEachSlotFilePath20.cache'
+        self.match_io_in_each_slot_file_path = './result/MatchIOInEachSlotFilePath20.cache'
+        self.dot_io_in_each_slot_file_path = './result/DotIOInEachSlotFilePath20.cache'
+        self.proposed_io_in_each_slot_file_path = './result/ProposedIOInEachSlotFilePath20.cache'
 
-        self.local_ratio_in_each_slot_file_path = './result/LocalRatioInEachSlotFilePath10.cache'
-        self.edge_ratio_in_each_slot_file_path = './result/EdgeRatioInEachSlotFilePath10.cache'
-        self.d2d_ratio_in_each_slot_file_path = './result/D2DRatioInEachSlotFilePath10.cache'
+        self.local_ratio_in_each_slot_file_path = './result/LocalRatioInEachSlotFilePath20.cache'
+        self.edge_ratio_in_each_slot_file_path = './result/EdgeRatioInEachSlotFilePath20.cache'
+        self.d2d_ratio_in_each_slot_file_path = './result/D2DRatioInEachSlotFilePath20.cache'

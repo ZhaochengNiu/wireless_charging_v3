@@ -8,7 +8,7 @@ from MobileDevice import MobileDevice
 from Edge import Edge
 from Config import Config
 from Task import Task
-from algorithm import local_algorithm, nearest_bs_algorithm, random_algorithm, proposed_algorithm, proposed_algorithm_v2,binary_match_game
+from algorithm import local_algorithm, nearest_bs_algorithm, random_algorithm, proposed_algorithm, binary_match_game, dot_game
 from trans_rate import get_upload_rate, get_d2d_rate
 
 # 只考虑任务执行时间的版本
@@ -50,8 +50,12 @@ def init_edge_device():
         edges = pickle.load(edges_cache_file)
         x_location_cache_file = open(config.x_location_in_each_slot_file_path, 'rb')
         x_location_in_each_slot = pickle.load(x_location_cache_file)
+        # print('x_location_in_each_slot=', x_location_in_each_slot)
+        # print(len(x_location_in_each_slot))
         y_location_cache_file = open(config.y_location_in_each_slot_file_path, 'rb')
         y_location_in_each_slot = pickle.load(y_location_cache_file)
+        # print('y_location_in_each_slot=', y_location_in_each_slot)
+        # print(len(y_location_in_each_slot))
     else:
         for i in range(0, config.total_number_of_edges):
             frequency = config.edge_cpu_frequency
@@ -168,11 +172,12 @@ def make_decision(time_slot):
     elif config.algorithm == 'match_algorithm':
         decisions = binary_match_game(decisions=decisions, config=config, devices=devices, edges=edges, time_slot=time_slot,
                                        task_in_each_slot=task_in_each_slot)
+    elif config.algorithm == 'dot_algorithm':
+        decisions = dot_game(decisions=decisions, config=config, devices=devices, edges=edges,
+                                      time_slot=time_slot,
+                                      task_in_each_slot=task_in_each_slot)
     elif config.algorithm == 'proposed_algorithm':
         decisions = proposed_algorithm(decisions=decisions, config=config, devices=devices, edges=edges, time_slot=time_slot,
-                                       task_in_each_slot=task_in_each_slot)
-    elif config.algorithm == 'proposed_algorithm_v2':
-        decisions = proposed_algorithm_v2(decisions=decisions, config=config, devices=devices, edges=edges, time_slot=time_slot,
                                        task_in_each_slot=task_in_each_slot)
     else:
         pass
@@ -646,6 +651,7 @@ def print_result():
     # ave_queue_length_in_each_slot_path = config.nearest_ave_queue_length_in_each_slot_file_path
     # ave_queue_length_in_each_slot_path = config.random_ave_queue_length_in_each_slot_file_path
     # ave_queue_length_in_each_slot_path = config.match_ave_queue_length_in_each_slot_file_path
+    # ave_queue_length_in_each_slot_path = config.dot_ave_queue_length_in_each_slot_file_path
     ave_queue_length_in_each_slot_path = config.proposed_ave_queue_length_in_each_slot_file_path
     file = open(ave_queue_length_in_each_slot_path, 'w+')
     for item in ave_queue_length_in_each_slot:
@@ -657,6 +663,7 @@ def print_result():
     # ave_execute_latency_in_each_slot_file_path = config.nearest_ave_execute_latency_in_each_slot_file_path
     # ave_execute_latency_in_each_slot_file_path = config.random_ave_execute_latency_in_each_slot_file_path
     # ave_execute_latency_in_each_slot_file_path = config.match_ave_execute_latency_in_each_slot_file_path
+    # ave_execute_latency_in_each_slot_file_path = config.dot_ave_execute_latency_in_each_slot_file_path
     ave_execute_latency_in_each_slot_file_path = config.proposed_ave_execute_latency_in_each_slot_file_path
     file = open(ave_execute_latency_in_each_slot_file_path, 'w+')
     for item in ave_execute_latency_in_each_slot:
@@ -668,6 +675,7 @@ def print_result():
     # energy_consumption_in_each_slot_file_path = config.nearest_energy_consumption_in_each_slot_file_path
     # energy_consumption_in_each_slot_file_path = config.random_energy_consumption_in_each_slot_file_path
     # energy_consumption_in_each_slot_file_path = config.match_energy_consumption_in_each_slot_file_path
+    # energy_consumption_in_each_slot_file_path = config.dot_energy_consumption_in_each_slot_file_path
     energy_consumption_in_each_slot_file_path = config.proposed_energy_consumption_in_each_slot_file_path
     file = open(energy_consumption_in_each_slot_file_path, 'w+')
     for item in energy_consumption_in_each_slot:
@@ -679,6 +687,7 @@ def print_result():
     # energy_harvest_in_each_slot_file_path = config.nearest_energy_harvest_in_each_slot_file_path
     # energy_harvest_in_each_slot_file_path = config.random_energy_harvest_in_each_slot_file_path
     # energy_harvest_in_each_slot_file_path = config.match_energy_harvest_in_each_slot_file_path
+    # energy_harvest_in_each_slot_file_path = config.dot_energy_harvest_in_each_slot_file_path
     energy_harvest_in_each_slot_file_path = config.proposed_energy_harvest_in_each_slot_file_path
     file = open(energy_harvest_in_each_slot_file_path, 'w+')
     for item in energy_harvest_in_each_slot:
@@ -690,6 +699,7 @@ def print_result():
     # energy_cost_in_each_slot_file_path = config.nearest_energy_cost_in_each_slot_file_path
     # energy_cost_in_each_slot_file_path = config.random_energy_cost_in_each_slot_file_path
     # energy_cost_in_each_slot_file_path = config.match_energy_cost_in_each_slot_file_path
+    # energy_cost_in_each_slot_file_path = config.dot_energy_cost_in_each_slot_file_path
     energy_cost_in_each_slot_file_path = config.proposed_energy_cost_in_each_slot_file_path
     file = open(energy_cost_in_each_slot_file_path, 'w+')
     for item in energy_cost_in_each_slot:
@@ -701,6 +711,7 @@ def print_result():
     # latency_cost_in_each_slot_file_path = config.nearest_latency_cost_in_each_slot_file_path
     # latency_cost_in_each_slot_file_path = config.random_latency_cost_in_each_slot_file_path
     # latency_cost_in_each_slot_file_path = config.match_latency_cost_in_each_slot_file_path
+    # latency_cost_in_each_slot_file_path = config.dot_latency_cost_in_each_slot_file_path
     latency_cost_in_each_slot_file_path = config.proposed_latency_cost_in_each_slot_file_path
     file = open(latency_cost_in_each_slot_file_path, 'w+')
     for item in latency_cost_in_each_slot:
@@ -712,6 +723,7 @@ def print_result():
     # total_cost_in_each_slot_file_path = config.nearest_total_cost_in_each_slot_file_path
     # total_cost_in_each_slot_file_path = config.random_total_cost_in_each_slot_file_path
     # total_cost_in_each_slot_file_path = config.match_total_cost_in_each_slot_file_path
+    # total_cost_in_each_slot_file_path = config.dot_total_cost_in_each_slot_file_path
     total_cost_in_each_slot_file_path = config.proposed_total_cost_in_each_slot_file_path
     file = open(total_cost_in_each_slot_file_path, 'w+')
     for item in total_cost_in_each_slot:
