@@ -1115,8 +1115,8 @@ class Config:
         # self.algorithm = 'nearest_algorithm'
         # self.algorithm = 'random_algorithm'
         # self.algorithm = 'match_algorithm'
-        self.algorithm = 'dot_algorithm'
-        # self.algorithm = 'proposed_algorithm'
+        # self.algorithm = 'dot_algorithm'
+        self.algorithm = 'proposed_algorithm'
         # 'local_algorithm'  'nearest_algorithm' 'random_algorithm' 'proposed_algorithm'
 
         # IoTJ: Joint Task Offloading, D2D Pairing, and Resource Allocation in Device-Enhanced MEC: A Potential Game Approach
@@ -1290,8 +1290,8 @@ class Config:
         # self.algorithm = 'nearest_algorithm'
         # self.algorithm = 'random_algorithm'
         # self.algorithm = 'match_algorithm'
-        # self.algorithm = 'dot_algorithm'
-        self.algorithm = 'proposed_algorithm'
+        self.algorithm = 'dot_algorithm'
+        # self.algorithm = 'proposed_algorithm'
         # 'local_algorithm'  'nearest_algorithm' 'random_algorithm' 'proposed_algorithm'
 
         # IoTJ: Joint Task Offloading, D2D Pairing, and Resource Allocation in Device-Enhanced MEC: A Potential Game Approach
@@ -1305,6 +1305,8 @@ class Config:
         self.edges_cache_file_path = './cache/Edges30.cache'
         self.task_cache_file_path = './cache/Task30.cache'
         self.number_of_tasks_cache_file_path = './cache/NumberOfTasks30.cache'
+        self.x_location_in_each_slot_file_path = './cache/XLocation30.cache'
+        self.y_location_in_each_slot_file_path = './cache/YLocation30.cache'
 
         self.local_ave_queue_length_in_each_slot_file_path = './result/LocalAveQueueLengthInEachSlotFilePath30.cache'
         self.nearest_ave_queue_length_in_each_slot_file_path = './result/NearestAveQueueLengthInEachSlotFilePath30.cache'
@@ -1462,8 +1464,8 @@ class Config:
         # self.algorithm = 'nearest_algorithm'
         # self.algorithm = 'random_algorithm'
         # self.algorithm = 'match_algorithm'
-        # self.algorithm = 'dot_algorithm'
-        self.algorithm = 'proposed_algorithm'
+        self.algorithm = 'dot_algorithm'
+        # self.algorithm = 'proposed_algorithm'
 
         # 'local_algorithm'  'nearest_algorithm' 'random_algorithm' 'match_algorithm' 'dot_algorithm' 'proposed_algorithm'
 
@@ -1476,6 +1478,8 @@ class Config:
         self.edges_cache_file_path = './cache/Edges40.cache'
         self.task_cache_file_path = './cache/Task40.cache'
         self.number_of_tasks_cache_file_path = './cache/NumberOfTasks40.cache'
+        self.x_location_in_each_slot_file_path = './cache/XLocation40.cache'
+        self.y_location_in_each_slot_file_path = './cache/YLocation40.cache'
 
         self.local_ave_queue_length_in_each_slot_file_path = './result/LocalAveQueueLengthInEachSlotFilePath40.cache'
         self.nearest_ave_queue_length_in_each_slot_file_path = './result/NearestAveQueueLengthInEachSlotFilePath40.cache'
