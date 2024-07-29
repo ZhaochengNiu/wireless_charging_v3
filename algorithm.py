@@ -174,7 +174,7 @@ def binary_match_game(decisions, config, devices, edges, time_slot, task_in_each
     for device_id in range(config.total_number_of_devices):
         if task_in_each_slot[time_slot][device_id] != 0:
             # 遍历所有可以选择的决策，选择最优的决策。
-            cost_flag = 10000000
+            cost_flag = 100000000
             execute_mode = ''
             execute_destination = -2
             task = task_in_each_slot[time_slot][device_id]
@@ -210,7 +210,9 @@ def binary_match_game(decisions, config, devices, edges, time_slot, task_in_each
             # 本地计算总效用
             # total_local_cost = latency_weight * local_latency_cost + energy_weight * local_energy_cost
             # scale
-            total_local_cost = latency_weight * local_latency_cost + 30 * energy_weight * local_energy_cost
+            # total_local_cost = latency_weight * local_latency_cost + 30 * energy_weight * local_energy_cost
+            # 没有动态权重
+            total_local_cost = local_latency_cost + 30 * local_energy_cost
             # 更新 flag
             if total_local_cost <= cost_flag:
                 cost_flag = total_local_cost
@@ -261,7 +263,9 @@ def binary_match_game(decisions, config, devices, edges, time_slot, task_in_each
                     # 边缘总效用
                     # total_edge_cost = energy_weight * edge_energy_cost + latency_weight * edge_latency_cost
                     # scale
-                    total_edge_cost = 30 * energy_weight * edge_energy_cost + latency_weight * edge_latency_cost
+                    # total_edge_cost = 30 * energy_weight * edge_energy_cost + latency_weight * edge_latency_cost
+                    # 没有动态权重
+                    total_edge_cost = 30 * edge_energy_cost + edge_latency_cost
                     # 更新 flag
                     if total_edge_cost <= cost_flag:
                         cost_flag = total_edge_cost
@@ -325,7 +329,9 @@ def binary_match_game(decisions, config, devices, edges, time_slot, task_in_each
                     # d2d 总效用
                     # total_d2d_cost = energy_weight * d2d_energy_cost + latency_weight * d2d_latency_cost
                     # scale
-                    total_d2d_cost = 30 * energy_weight * d2d_energy_cost + latency_weight * d2d_latency_cost
+                    # total_d2d_cost = 30 * energy_weight * d2d_energy_cost + latency_weight * d2d_latency_cost
+                    # 没有动态权重
+                    total_d2d_cost = 30 * d2d_energy_cost + d2d_latency_cost
                     # 更新 flag
                     if total_d2d_cost <= cost_flag:
                         cost_flag = total_d2d_cost
@@ -511,7 +517,9 @@ def dot_game(decisions, config, devices, edges, time_slot, task_in_each_slot):
             # 本地计算总效用
             # total_local_cost = latency_weight * local_latency_cost + energy_weight * local_energy_cost
             # scale
-            total_local_cost = latency_weight * local_latency_cost + 30 * energy_weight * local_energy_cost
+            # total_local_cost = latency_weight * local_latency_cost + 30 * energy_weight * local_energy_cost
+            # 没有动态权重
+            total_local_cost = local_latency_cost + 30 * local_energy_cost
             # 更新 flag
             if total_local_cost <= cost_flag:
                 cost_flag = total_local_cost
@@ -618,6 +626,8 @@ def dot_game(decisions, config, devices, edges, time_slot, task_in_each_slot):
                     # cost = latency_weight * latency_cost + energy_weight * energy_cost
                     # scale
                     total_edge_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                    # 没有动态权重
+                    total_edge_cost = latency_cost + 30 * energy_cost
                     if total_edge_cost <= cost_flag:
                         cost_flag = total_edge_cost
                         iteration_execute_mode = 'edge'
@@ -736,7 +746,9 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                 # 总效用
                 # total_local_cost = latency_weight * latency_cost + energy_weight * energy_cost
                 # scale
-                total_local_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                # total_local_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                # 没有动态权重
+                total_local_cost = latency_cost + 30 * energy_cost
                 last_total_cost = total_local_cost
             elif decisions.execute_mode[lucky_user] == 'edge':
                 execute_edge_id = decisions.execute_destination[lucky_user]
@@ -832,7 +844,9 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                 # 总效用
                 # total_edge_cost = latency_weight * latency_cost + energy_weight * energy_cost
                 # scale
-                total_edge_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                # total_edge_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                # 没有动态权重
+                total_edge_cost = latency_cost + 30 * energy_cost
                 last_total_cost = total_edge_cost
             elif decisions.execute_mode[lucky_user] == 'device':
                 execute_device_id = decisions.execute_destination[lucky_user]
@@ -932,6 +946,8 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                 # total_d2d_cost = latency_weight * latency_cost + energy_weight * energy_cost
                 # scale
                 total_d2d_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                # 没有动态权重
+                total_d2d_cost = latency_cost + 30 * energy_cost
                 last_total_cost = total_d2d_cost
             # this interation
             rand = numpy.random.randint(1, 4)
@@ -964,7 +980,9 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                 # 总效用
                 # total_local_cost = latency_weight * latency_cost + energy_weight * energy_cost
                 # scale
-                total_local_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                # total_local_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                # 没有动态权重
+                total_local_cost = latency_cost + 30 * energy_cost
                 this_total_cost = total_local_cost
                 if this_total_cost <= last_total_cost:
                     decisions.execute_mode[lucky_user] = 'local'
@@ -1017,7 +1035,9 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                     # 总效用
                     # total_local_cost = latency_weight * latency_cost + energy_weight * energy_cost
                     # scale
-                    total_local_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                    # total_local_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                    # 没有动态权重
+                    total_local_cost = latency_cost + 30 * energy_cost
                     this_total_cost = total_local_cost
                     if this_total_cost <= last_total_cost:
                         decisions.execute_mode[lucky_user] = 'local'
@@ -1115,7 +1135,9 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                         # 总效用
                         # total_edge_cost = latency_weight * latency_cost + energy_weight * energy_cost
                         # scale
-                        total_edge_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                        # total_edge_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                        # 没有动态权重
+                        total_edge_cost = latency_cost + 30 * energy_cost
                         #
                         Y[x] = total_edge_cost
                     pbest_x = X.copy()  # personal best location of every particle in history
@@ -1217,7 +1239,9 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                             # 总效用
                             # total_edge_cost = latency_weight * latency_cost + energy_weight * energy_cost
                             # scale
-                            total_edge_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                            # total_edge_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                            # 没有动态权重
+                            total_edge_cost = latency_cost + 30 * energy_cost
                             #
                             Y[x] = total_edge_cost
                         # update_pbest
@@ -1299,7 +1323,9 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                     # 总效用
                     # total_local_cost = latency_weight * latency_cost + energy_weight * energy_cost
                     # scale
-                    total_local_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                    # total_local_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                    # 没有动态权重
+                    total_local_cost = latency_cost + 30 * energy_cost
                     this_total_cost = total_local_cost
                     if this_total_cost <= last_total_cost:
                         decisions.execute_mode[lucky_user] = 'local'
@@ -1402,7 +1428,9 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                         # 总效用
                         # total_d2d_cost = latency_weight * latency_cost + energy_weight * energy_cost
                         # scale
-                        total_d2d_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                        # total_d2d_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                        # 没有动态权重
+                        total_d2d_cost = latency_cost + 30 * energy_cost
                         #
                         Y[x] = total_d2d_cost
                     pbest_x = X.copy()  # personal best location of every particle in history
@@ -1511,7 +1539,9 @@ def proposed_algorithm(decisions, config, devices, edges, time_slot, task_in_eac
                             # 总效用
                             # total_d2d_cost = latency_weight * latency_cost + energy_weight * energy_cost
                             # scale
-                            total_d2d_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                            # total_d2d_cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+                            # 没有动态权重
+                            total_d2d_cost = latency_cost + 30 * energy_cost
                             #
                             Y[x] = total_d2d_cost
                         # update_pbest

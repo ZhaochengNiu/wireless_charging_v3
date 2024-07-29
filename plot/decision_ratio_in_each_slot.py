@@ -4,9 +4,9 @@ import seaborn as sns
 
 sns.set_theme(context='notebook', style='whitegrid', font='sans-serif', font_scale=1.0, color_codes=True, rc=None)
 
-Local = np.loadtxt('LocalRatioInEachSlotFilePath10.cache')
-Edge = np.loadtxt('EdgeRatioInEachSlotFilePath10.cache')
-D2D = np.loadtxt('D2DRatioInEachSlotFilePath10.cache')
+Local = np.loadtxt('../result/LocalRatioInEachSlotFilePath10.cache')
+Edge = np.loadtxt('../result/EdgeRatioInEachSlotFilePath10.cache')
+D2D = np.loadtxt('../result/D2DRatioInEachSlotFilePath10.cache')
 
 # 生成数据
 # x = np.arange(0, 1000, 1)  # 横坐标数据为从0到10之间，步长为0.1的等差数组
@@ -41,7 +41,7 @@ plt.ylabel('Ratio of different decision mode in each slot (s)')
 
 plt.legend(handles=[Local_temp, Edge_temp, D2D_temp], labels=['Local Ratio', 'Edge Ratio', 'D2D Ratio'], loc='best')
 
-plt.savefig('./plot/DecisionRatioInEachSlot.pdf', format='pdf')
+plt.savefig('../plot/DecisionRatioInEachSlot.pdf', format='pdf')
 # 显示图形
 
 plt.show()

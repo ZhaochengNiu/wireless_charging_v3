@@ -56,6 +56,6 @@ plt.xlim(0, 1000)
 plt.legend(handles=[Local_temp, Nearest_temp, Random_temp, Match_temp, Proposed_temp], labels=['Local', 'Nearest', 'Random', 'Match', 'Proposed'], loc='best')
 # 显示图形
 
-plt.savefig('./fig/AveExecuteLatencyInEachSlot40.pdf', format='pdf')
+plt.savefig('../fig/AveExecuteLatencyInEachSlot40.pdf', format='pdf')
 
 plt.show()

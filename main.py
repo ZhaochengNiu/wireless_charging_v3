@@ -209,7 +209,7 @@ def execute_decision(device, edges, time_slot, decisions):
             queue_length = device.task_queue_length()
             local_execute_latency = queue_length / device.frequency
             latency_cost = local_execute_latency
-            # print('latency_cost', latency_cost)
+            print('latency_cost', latency_cost)
             # 本地计算能耗
             local_computing_power = config.SWITCHED_CAPACITANCE * math.pow(device.frequency, 3)
             local_computing_latency = cpu_frequency_demand / device.frequency
@@ -244,11 +244,13 @@ def execute_decision(device, edges, time_slot, decisions):
             # print('energy queue length', device.energy_queue_length())
             # 能量效用
             energy_cost = energy_consumption - energy_harvest
-            # print(energy_cost)
+            print(energy_cost)
             # 总效用
             # cost = latency_weight * latency_cost + energy_weight * energy_cost
             # scale
-            cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+            # cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+            # 没有动态权重
+            cost = latency_cost + 30 * energy_cost
 
         elif decisions.execute_mode[device.id] == 'edge':
             # print('edge')
@@ -340,7 +342,7 @@ def execute_decision(device, edges, time_slot, decisions):
             # print('energy queue length', device.energy_queue_length())
             # 能量效用
             energy_cost = energy_consumption - energy_harvest
-            # print('energy_cost', energy_cost)
+            print('energy_cost', energy_cost)
             # 边缘计算执行时间
             if offload_computing_portion > 0:
                 offload_computing_cpu_demand = cpu_frequency_demand - local_computing_cpu_demand
@@ -359,11 +361,13 @@ def execute_decision(device, edges, time_slot, decisions):
             # print('local_execute_latency', local_execute_latency)
             # print('edge_execute_latency', edge_execute_latency)
             latency_cost = max(local_execute_latency, edge_execute_latency)
-            # print('latency_cost', latency_cost)
+            print('latency_cost', latency_cost)
             # 总效用
             # cost = latency_weight * latency_cost + energy_weight * energy_cost
             # scale
-            cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+            # cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+            # 没有动态权重
+            cost = latency_cost + 30 * energy_cost
 
         elif decisions.execute_mode[device.id] == 'device':
             # print('device')
@@ -421,7 +425,7 @@ def execute_decision(device, edges, time_slot, decisions):
                 energy_harvest_slot_length = config.time_slot_length - d2d_transmit_latency
                 # print('energy_harvest_slot_length', energy_harvest_slot_length)
                 energy_harvest = config.ENERGY_CONVERSION_EFFICIENCY * edges[destination].trans_power * energy_harvest_gain * energy_harvest_slot_length
-                print('energy_harvest', energy_harvest)
+                # print('energy_harvest', energy_harvest)
             else:
                 energy_harvest = 0
             # 本地计算时间
@@ -485,7 +489,9 @@ def execute_decision(device, edges, time_slot, decisions):
             # 总效用
             # cost = latency_weight * latency_cost + energy_weight * energy_cost
             # scale
-            cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+            # cost = latency_weight * latency_cost + 30 * energy_weight * energy_cost
+            # 没有动态权重
+            cost = latency_cost + 30 * energy_cost
         # logging.info("<Time-%s> --> <NCP-%s> ｜ 执行后Q: %s  执行成本:%s", time_slot, device.id, device.queue, total_cost)
         else:
             print('error_482')
@@ -651,8 +657,8 @@ def print_result():
     # ave_queue_length_in_each_slot_path = config.nearest_ave_queue_length_in_each_slot_file_path
     # ave_queue_length_in_each_slot_path = config.random_ave_queue_length_in_each_slot_file_path
     # ave_queue_length_in_each_slot_path = config.match_ave_queue_length_in_each_slot_file_path
-    ave_queue_length_in_each_slot_path = config.dot_ave_queue_length_in_each_slot_file_path
-    # ave_queue_length_in_each_slot_path = config.proposed_ave_queue_length_in_each_slot_file_path
+    # ave_queue_length_in_each_slot_path = config.dot_ave_queue_length_in_each_slot_file_path
+    ave_queue_length_in_each_slot_path = config.proposed_ave_queue_length_in_each_slot_file_path
     file = open(ave_queue_length_in_each_slot_path, 'w+')
     for item in ave_queue_length_in_each_slot:
         file.write(str(item) + " ")
@@ -663,8 +669,8 @@ def print_result():
     # ave_execute_latency_in_each_slot_file_path = config.nearest_ave_execute_latency_in_each_slot_file_path
     # ave_execute_latency_in_each_slot_file_path = config.random_ave_execute_latency_in_each_slot_file_path
     # ave_execute_latency_in_each_slot_file_path = config.match_ave_execute_latency_in_each_slot_file_path
-    ave_execute_latency_in_each_slot_file_path = config.dot_ave_execute_latency_in_each_slot_file_path
-    # ave_execute_latency_in_each_slot_file_path = config.proposed_ave_execute_latency_in_each_slot_file_path
+    # ave_execute_latency_in_each_slot_file_path = config.dot_ave_execute_latency_in_each_slot_file_path
+    ave_execute_latency_in_each_slot_file_path = config.proposed_ave_execute_latency_in_each_slot_file_path
     file = open(ave_execute_latency_in_each_slot_file_path, 'w+')
     for item in ave_execute_latency_in_each_slot:
         file.write(str(item) + " ")
@@ -675,8 +681,8 @@ def print_result():
     # energy_consumption_in_each_slot_file_path = config.nearest_energy_consumption_in_each_slot_file_path
     # energy_consumption_in_each_slot_file_path = config.random_energy_consumption_in_each_slot_file_path
     # energy_consumption_in_each_slot_file_path = config.match_energy_consumption_in_each_slot_file_path
-    energy_consumption_in_each_slot_file_path = config.dot_energy_consumption_in_each_slot_file_path
-    # energy_consumption_in_each_slot_file_path = config.proposed_energy_consumption_in_each_slot_file_path
+    # energy_consumption_in_each_slot_file_path = config.dot_energy_consumption_in_each_slot_file_path
+    energy_consumption_in_each_slot_file_path = config.proposed_energy_consumption_in_each_slot_file_path
     file = open(energy_consumption_in_each_slot_file_path, 'w+')
     for item in energy_consumption_in_each_slot:
         file.write(str(item) + " ")
@@ -687,8 +693,8 @@ def print_result():
     # energy_harvest_in_each_slot_file_path = config.nearest_energy_harvest_in_each_slot_file_path
     # energy_harvest_in_each_slot_file_path = config.random_energy_harvest_in_each_slot_file_path
     # energy_harvest_in_each_slot_file_path = config.match_energy_harvest_in_each_slot_file_path
-    energy_harvest_in_each_slot_file_path = config.dot_energy_harvest_in_each_slot_file_path
-    # energy_harvest_in_each_slot_file_path = config.proposed_energy_harvest_in_each_slot_file_path
+    # energy_harvest_in_each_slot_file_path = config.dot_energy_harvest_in_each_slot_file_path
+    energy_harvest_in_each_slot_file_path = config.proposed_energy_harvest_in_each_slot_file_path
     file = open(energy_harvest_in_each_slot_file_path, 'w+')
     for item in energy_harvest_in_each_slot:
         file.write(str(item) + " ")
@@ -699,8 +705,8 @@ def print_result():
     # energy_cost_in_each_slot_file_path = config.nearest_energy_cost_in_each_slot_file_path
     # energy_cost_in_each_slot_file_path = config.random_energy_cost_in_each_slot_file_path
     # energy_cost_in_each_slot_file_path = config.match_energy_cost_in_each_slot_file_path
-    energy_cost_in_each_slot_file_path = config.dot_energy_cost_in_each_slot_file_path
-    # energy_cost_in_each_slot_file_path = config.proposed_energy_cost_in_each_slot_file_path
+    # energy_cost_in_each_slot_file_path = config.dot_energy_cost_in_each_slot_file_path
+    energy_cost_in_each_slot_file_path = config.proposed_energy_cost_in_each_slot_file_path
     file = open(energy_cost_in_each_slot_file_path, 'w+')
     for item in energy_cost_in_each_slot:
         file.write(str(item) + " ")
@@ -711,8 +717,8 @@ def print_result():
     # latency_cost_in_each_slot_file_path = config.nearest_latency_cost_in_each_slot_file_path
     # latency_cost_in_each_slot_file_path = config.random_latency_cost_in_each_slot_file_path
     # latency_cost_in_each_slot_file_path = config.match_latency_cost_in_each_slot_file_path
-    latency_cost_in_each_slot_file_path = config.dot_latency_cost_in_each_slot_file_path
-    # latency_cost_in_each_slot_file_path = config.proposed_latency_cost_in_each_slot_file_path
+    # latency_cost_in_each_slot_file_path = config.dot_latency_cost_in_each_slot_file_path
+    latency_cost_in_each_slot_file_path = config.proposed_latency_cost_in_each_slot_file_path
     file = open(latency_cost_in_each_slot_file_path, 'w+')
     for item in latency_cost_in_each_slot:
         file.write(str(item) + " ")
@@ -723,8 +729,8 @@ def print_result():
     # total_cost_in_each_slot_file_path = config.nearest_total_cost_in_each_slot_file_path
     # total_cost_in_each_slot_file_path = config.random_total_cost_in_each_slot_file_path
     # total_cost_in_each_slot_file_path = config.match_total_cost_in_each_slot_file_path
-    total_cost_in_each_slot_file_path = config.dot_total_cost_in_each_slot_file_path
-    # total_cost_in_each_slot_file_path = config.proposed_total_cost_in_each_slot_file_path
+    # total_cost_in_each_slot_file_path = config.dot_total_cost_in_each_slot_file_path
+    total_cost_in_each_slot_file_path = config.proposed_total_cost_in_each_slot_file_path
     file = open(total_cost_in_each_slot_file_path, 'w+')
     for item in total_cost_in_each_slot:
         file.write(str(item) + " ")

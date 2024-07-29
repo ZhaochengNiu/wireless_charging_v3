@@ -39,6 +39,6 @@ plt.ylabel('Average backlog of queues in the system (MB)')
 # 设置legend
 plt.legend(handles=[Local, Nearest, Random, Match, Proposed], labels=['Local', 'Nearest', 'Random', 'Match', 'Proposed'], loc='best')
 
-plt.savefig('./fig/AveQueueLengthInEachSlot20.pdf', format='pdf')
+plt.savefig('../fig/AveQueueLengthInEachSlot20.pdf', format='pdf')
 # 显示图形
 plt.show()
