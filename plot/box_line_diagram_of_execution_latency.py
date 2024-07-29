@@ -5,10 +5,11 @@ Local = np.loadtxt('../result/LocalAveExecuteLatencyInEachSlotFilePath50.cache')
 Nearest = np.loadtxt('../result/NearestAveExecuteLatencyInEachSlotFilePath50.cache')
 Random = np.loadtxt('../result/RandomAveExecuteLatencyInEachSlotFilePath50.cache')
 Match = np.loadtxt('../result/MatchAveExecuteLatencyInEachSlotFilePath50.cache')
+Dot = np.loadtxt('../result/DotAveExecuteLatencyInEachSlotFilePath50.cache')
 Proposed = np.loadtxt('../result/ProposedAveExecuteLatencyInEachSlotFilePath50.cache')
 
-all_data = [Local, Nearest, Random, Match, Proposed]
-labels = ['Local', 'Nearest', 'Random', 'Match', 'Proposed']
+all_data = [Local, Nearest, Random, Match, Dot, Proposed]
+labels = ['Local', 'Nearest', 'Random', 'Match', 'Dot', 'Proposed']
 
 
 # fig, axes = plt.subplots(figsize=(5, 5))
@@ -23,7 +24,7 @@ bplot = axes.boxplot(all_data,
                          showfliers = False,   # 是否显示异常值
                          showmeans = True,    # 是否显示均值，默认不显示；
                          meanline = False,   # meanline参数（bool值，是否用线的形式表示均值，默认值False用点来表示）
-                         widths = [0.5, 0.5, 0.5, 0.5, 0.5],  # widths参数（float值，指定箱线图的宽度，默认值：0.5）
+                         widths = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5],  # widths参数（float值，指定箱线图的宽度，默认值：0.5）
                          medianprops={'linestyle':'-','linewidth':1,'color':'k'},  # medianprops参数（设置中位数的属性，如线的类型、粗细等）
                          meanprops={'marker':'*', "markerfacecolor":'k', "markeredgecolor":'k',"markersize": 8},  # meanprops参数（设置均值的属性）
                          labels = labels)   # 为箱线图添加标签，类似于图例的作用；
@@ -61,7 +62,7 @@ bplot = axes.boxplot(all_data,
 # colors = ['#706fd3', '#34ace0', '#33d9b2', '#ffb142', '#c56cf0','#f78fb3', '#ff4d4d']
 
 # 填充颜色
-colors = ['#706fd3', '#34ace0', '#33d9b2', '#ffb142', '#c56cf0']
+colors = ['#706fd3', '#34ace0', '#33d9b2', '#ffb142', '#c56cf0','#f78fb3']
 
 for patch, color in zip(bplot['boxes'], colors):
     patch.set_facecolor(color)

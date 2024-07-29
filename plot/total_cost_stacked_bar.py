@@ -32,12 +32,12 @@ Match40 = np.loadtxt('../result/MatchTotalCostInEachSlotFilePath40.cache')
 Dot40 = np.loadtxt('../result/DotTotalCostInEachSlotFilePath40.cache')
 Proposed40 = np.loadtxt('../result/ProposedTotalCostInEachSlotFilePath40.cache')
 
-# Local50 = np.loadtxt('../result/LocalTotalCostInEachSlotFilePath50.cache')
-# Nearest50 = np.loadtxt('../result/NearestTotalCostInEachSlotFilePath50.cache')
-# Random50 = np.loadtxt('../result/RandomTotalCostInEachSlotFilePath50.cache')
-# Match50 = np.loadtxt('../result/MatchTotalCostInEachSlotFilePath50.cache')
-# Dot50 = np.loadtxt('../result/DotTotalCostInEachSlotFilePath50.cache')
-# Proposed50 = np.loadtxt('../result/ProposedTotalCostInEachSlotFilePath50.cache')
+Local50 = np.loadtxt('../result/LocalTotalCostInEachSlotFilePath50.cache')
+Nearest50 = np.loadtxt('../result/NearestTotalCostInEachSlotFilePath50.cache')
+Random50 = np.loadtxt('../result/RandomTotalCostInEachSlotFilePath50.cache')
+Match50 = np.loadtxt('../result/MatchTotalCostInEachSlotFilePath50.cache')
+Dot50 = np.loadtxt('../result/DotTotalCostInEachSlotFilePath50.cache')
+Proposed50 = np.loadtxt('../result/ProposedTotalCostInEachSlotFilePath50.cache')
 
 Local10_cost = sum(Local10)
 Nearest10_cost = sum(Nearest10)
@@ -67,15 +67,14 @@ Match40_cost = sum(Match40)
 Dot40_cost = sum(Dot40)
 Proposed40_cost = sum(Proposed40)
 
-# Local50_cost = sum(Local50)
-# Nearest50_cost = sum(Nearest50)
-# Random50_cost = sum(Random50)
-# Match50_cost = sum(Match50)
-# Dot50_cost = sum(Dot50)
-# Proposed50_cost = sum(Proposed50)
+Local50_cost = sum(Local50)
+Nearest50_cost = sum(Nearest50)
+Random50_cost = sum(Random50)
+Match50_cost = sum(Match50)
+Dot50_cost = sum(Dot50)
+Proposed50_cost = sum(Proposed50)
 
-# labels = ['10', '20', '30', '40', '50']
-labels = ['10', '20', '30', '40']
+labels = ['10', '20', '30', '40', '50']
 Local = []
 Nearest = []
 Random = []
@@ -111,12 +110,12 @@ Match.append(Match40_cost)
 Dot.append(Dot40_cost)
 Proposed.append(Proposed40_cost)
 
-# Local.append(Local50_cost)
-# Nearest.append(Nearest50_cost)
-# Random.append(Random50_cost)
-# Match.append(Match50_cost)
-# Dot.append(Dot50_cost)
-# Proposed.append(Proposed50_cost)
+Local.append(Local50_cost)
+Nearest.append(Nearest50_cost)
+Random.append(Random50_cost)
+Match.append(Match50_cost)
+Dot.append(Dot50_cost)
+Proposed.append(Proposed50_cost)
 
 x = np.arange(len(labels))  # the label locations
 width = 0.1  # the width of the bars
@@ -131,7 +130,7 @@ Local = ax.bar(x - 5*width/2, Local, width=width, label='Local', edgecolor='blac
 Nearest = ax.bar(x - 3*width/2, Nearest, width=width, label='Nearest', edgecolor='black', color=colors[1], linewidth=.8, hatch='//')
 Random = ax.bar(x - width/2, Random, width=width, label='Random', edgecolor='black', color=colors[2], linewidth=.8, hatch='//')
 Match = ax.bar(x + width/2, Match, width=width, label='Match', edgecolor='black', color=colors[3], linewidth=.8, hatch='//')
-Match = ax.bar(x + 3*width/2, Dot, width=width, label='Dot', edgecolor='black', color=colors[4], linewidth=.8, hatch='//')
+Dot = ax.bar(x + 3*width/2, Dot, width=width, label='Dot', edgecolor='black', color=colors[4], linewidth=.8, hatch='//')
 Proposed = ax.bar(x + 5*width/2, Proposed, width=width, label='Proposed', edgecolor='black', color=colors[5], linewidth=.8, hatch='//')
 
 # Add some text for labels, title and custom x-axis tick labels, etc.

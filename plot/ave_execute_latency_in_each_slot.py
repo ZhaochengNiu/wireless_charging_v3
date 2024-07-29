@@ -11,6 +11,7 @@ Local = np.loadtxt('../result/LocalAveExecuteLatencyInEachSlotFilePath40.cache')
 Nearest = np.loadtxt('../result/NearestAveExecuteLatencyInEachSlotFilePath40.cache')
 Random = np.loadtxt('../result/RandomAveExecuteLatencyInEachSlotFilePath40.cache')
 Match = np.loadtxt('../result/MatchAveExecuteLatencyInEachSlotFilePath40.cache')
+Dot = np.loadtxt('../result/DotAveExecuteLatencyInEachSlotFilePath40.cache')
 Proposed = np.loadtxt('../result/ProposedAveExecuteLatencyInEachSlotFilePath40.cache')
 
 # 生成数据
@@ -20,6 +21,7 @@ Local_temp = []
 Nearest_temp = []
 Random_temp = []
 Match_temp = []
+Dot_temp = []
 Proposed_temp = []
 
 for i in range(0, 1000, 5):
@@ -27,6 +29,7 @@ for i in range(0, 1000, 5):
     Nearest_temp.append(Nearest[i])
     Random_temp.append(Random[i])
     Match_temp.append(Match[i])
+    Dot_temp.append(Dot[i])
     Proposed_temp.append(Proposed[i])
 
 # 生成图形
@@ -39,6 +42,7 @@ Local_temp, = plt.plot(x, Local_temp, color='#bb3f3f', alpha=0.8, linestyle='-',
 Nearest_temp, = plt.plot(x, Nearest_temp, color='#fcb001', alpha=0.8, linestyle='-', linewidth=1.2)
 Random_temp, = plt.plot(x, Random_temp, color='#016795', alpha=0.8, linestyle='-', linewidth=1.2)
 Match_temp, = plt.plot(x, Match_temp, color='#9999FF', alpha=0.8, linestyle='-', linewidth=1.2)
+Dot_temp, = plt.plot(x, Dot_temp, color='#FF6666', alpha=0.8, linestyle='-', linewidth=1.2)
 Proposed_temp, = plt.plot(x, Proposed_temp, color='#ad03de', alpha=0.8, linestyle='-', linewidth=1.2)
 
 # colors = ['#9999FF', '#58C9B9', '#CC33CC', '#D1B6E1', '#99FF99', '#FF6666']

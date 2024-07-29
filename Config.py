@@ -95,13 +95,13 @@ class Config:
         # self.algorithm = 'nearest_algorithm'
         # self.algorithm = 'random_algorithm'
         # self.algorithm = 'match_algorithm'
-        # self.algorithm = 'dot_algorithm'
-        self.algorithm = 'proposed_algorithm'
+        self.algorithm = 'dot_algorithm'
+        # self.algorithm = 'proposed_algorithm'
         # 'local_algorithm'  'nearest_algorithm' 'random_algorithm' 'proposed_algorithm'
 
         # 缓存设置
-        # self.cache = True
-        self.cache = False
+        self.cache = True
+        # self.cache = False
         # True False
 
         self.devices_cache_file_path = './cache/Devices50.cache'
